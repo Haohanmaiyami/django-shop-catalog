@@ -19,3 +19,22 @@ Bootstrap 5
 Python 3.11
 
 Git/GitHub
+
+ДЗ Номер 2
+
+## Возможности
+
+- Модели Category и Product
+- Подключение PostgreSQL вместо SQLite
+- Настройка админки с фильтрацией и поиском
+- Загрузка тестовых данных через фикстуры
+- Кастомная команда load_test_data
+
+## Технологии
+Django 5.2
+
+PostgreSQL
+
+Python 3.11
+
+Pillow, ipython
