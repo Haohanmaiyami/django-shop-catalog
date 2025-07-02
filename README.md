@@ -62,3 +62,30 @@ PostgreSQL
 Python 3.11
 
 Bootstrap 5, Pillow
+
+## ДЗ Номер 4
+
+Добавлено приложение блога с полным CRUD, CBV и дополнительной логикой.
+
+### Возможности
+
+- Приложение `blog`, зарегистрировано в `INSTALLED_APPS`
+- Модель `Blog` с полями:
+  - `title`, `content`, `preview`, `created_at`, `is_published`, `views_count`
+- Полный CRUD через CBV:
+  - `BlogListView`, `BlogDetailView`, `BlogCreateView`, `BlogUpdateView`, `BlogDeleteView`
+- Шаблоны:
+  - `blog_list.html`, `blog_detail.html`, `blog_form.html`, `blog_confirm_delete.html`
+- Все шаблоны используют `base.html` и `block content`
+- Логика:
+  - При просмотре статьи увеличивается `views_count`
+  - В список выводятся только опубликованные записи (`is_published=True`)
+  - После редактирования идёт редирект на `blog_detail`
+
+### Технологии
+
+Django 5.2  
+Python 3.11  
+Bootstrap 5  
+Git/GitHub  
+Работа с CBV, шаблонами, `get_object()`, `get_queryset()`, `get_success_url()`

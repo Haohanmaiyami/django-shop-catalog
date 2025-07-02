@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>Блог</h1>
+<a href="{% url 'blog:blog_create' %}">Создать новую запись</a>
+<ul>
+    {% for blog in blogs %}
+        <li>
+            <a href="{% url 'blog:blog_detail' blog.pk %}">{{ blog.title }}</a>
+            — {{ blog.created_at|date:"d.m.Y H:i" }}
+        </li>
+    {% empty %}
+        <li>Нет записей</li>
+    {% endfor %}
+</ul>
+{% endblock %}
