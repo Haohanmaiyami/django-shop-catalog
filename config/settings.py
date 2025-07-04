@@ -26,6 +26,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "catalog",
+    "blog",
     "django.contrib.staticfiles",
 ]
 
