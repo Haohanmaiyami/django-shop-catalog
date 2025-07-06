@@ -2,8 +2,11 @@
 {% load my_tags %}
 {% block content %}
 <div class="album py-5 bg-body-tertiary">
-        <div class="container">
-            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+    <div class="container">
+        <div class="mb-4 text-end">
+            <a class="btn btn-success" href="{% url 'products:product_create' %}" role="button">Create Product</a>
+        </div>
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
                 {% for product in products %}
                 <div class="col">
                     <div class="card shadow-sm">
