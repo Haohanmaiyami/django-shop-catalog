@@ -5,7 +5,9 @@
             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
                 <div class="col">
                     <div class="card shadow-sm">
-                        <img src="{{ product.photo.url }}">
+                        {% if product.photo %}
+                            <img src="{{ product.photo.url }}">
+                        {% endif %}
                         <div class="card-body">
                             <p class="card-text">Name of the product: {{ product.name }}</p>
                             <p class="card-text">What is it: {{ product.description }}</p>
@@ -13,7 +15,12 @@
                             <p class="card-text">Cost: {{ product.price }} $</p>
                             <div class="d-flex justify-content-between align-items-center">
                                 <div class="btn-group">
-                                    <a class="btn btn-primary" href="{% url 'products:products_list'%}" role="button">go back</a>
+                                    <a class="btn btn-primary" href="{% url 'products:products_list' %}" role="button">go
+                                        back</a>
+                                    <a class="btn btn-warning" href="{% url 'products:product_update' product.pk %}"
+                                       role="button">edit</a>
+                                    <a class="btn btn-danger" href="{% url 'products:product_delete' product.pk %}"
+                                       role="button">delete</a>
                                 </div>
                                 <small class="text-body-secondary">9 mins</small></div>
                         </div>

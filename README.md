@@ -89,3 +89,33 @@ Python 3.11
 Bootstrap 5  
 Git/GitHub  
 Работа с CBV, шаблонами, `get_object()`, `get_queryset()`, `get_success_url()`
+
+## ДЗ Номер 5
+
+Реализован CRUD для модели продуктов через django.forms с валидацией и стилизацией.
+
+### Возможности
+
+- Приложение `catalog`, зарегистрировано в `INSTALLED_APPS`
+- Модель `Product` с полями:
+  - `name`, `description`, `photo`, `category`, `price`, `created_at`, `updated_at`
+- Форма `ProductForm` на основе `ModelForm`
+- Полный CRUD через CBV:
+  - `ProductCreateView`, `ProductUpdateView`, `ProductDeleteView`
+- Маршруты:
+  - `product_create`, `product_update`, `product_delete`
+- Шаблоны:
+  - `product_form.html`, `product_confirm_delete.html`
+- Валидация:
+  - `clean_name`, `clean_description` — запрещены слова: казино, криптовалюта, крипта, биржа, дешево, бесплатно, обман, полиция, радар
+  - `clean_price` — цена не может быть отрицательной
+- Стилизация формы:
+  - Через `__init__`, классы Bootstrap (`form-control`, `form-select`, `form-check-input`)
+
+### Технологии
+
+Django 5.2  
+Python 3.11  
+Bootstrap 5  
+Git/GitHub  
+Работа с ModelForm, ValidationError, CBV
