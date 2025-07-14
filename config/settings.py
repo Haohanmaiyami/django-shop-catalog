@@ -27,6 +27,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "catalog",
     "blog",
+    "users",
     "django.contrib.staticfiles",
 ]
 
@@ -121,3 +122,19 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+AUTH_USER_MODEL = 'users.User'
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.yandex.com'
+EMAIL_PORT = 465
+EMAIL_USE_SSL = True
+EMAIL_HOST_USER = 'ayankharitonov@yandex.com'
+EMAIL_HOST_PASSWORD = 'hitrrbpfltsreosn'
+
+LOGIN_REDIRECT_URL = 'products:products_list'
+
+LOGIN_URL = 'users:login'
+
+LOGOUT_REDIRECT_URL = 'products:products_list'
+
