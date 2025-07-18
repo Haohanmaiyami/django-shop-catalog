@@ -1,8 +1,9 @@
+from django.contrib.auth.decorators import permission_required
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.shortcuts import render, get_object_or_404
 from django.views.generic import TemplateView, ListView, DetailView
 from catalog.models import Product
 from django.http import HttpResponseForbidden
+from django.shortcuts import get_object_or_404, redirect
 
 from django.urls import reverse_lazy
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
@@ -23,17 +24,33 @@ class ProductListView(ListView):
     template_name = 'products_list.html'
     context_object_name = 'products'
 
+    def get_queryset(self):
+        user = self.request.user
+        if user.is_authenticated and (user.is_superuser or user.groups.filter(name='Модератор продуктов').exists()):
+            return Product.objects.all()
+        return Product.objects.filter(is_active=True)
+
 
 class ProductDetailView(LoginRequiredMixin, DetailView):
     model = Product
     template_name = 'products_detail.html'
     context_object_name = 'product'
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        user = self.request.user
+        context['is_moderator'] = user.groups.filter(name="Модератор продуктов").exists()
+        return context
+
 class ProductCreateView(LoginRequiredMixin, CreateView):
     model = Product
     form_class = ProductForm
     template_name = 'product_form.html'
     success_url = reverse_lazy('catalog:products_list')
+
+    def form_valid(self, form):
+        form.instance.owner = self.request.user
+        return super().form_valid(form)
 
 
 class ProductUpdateView(LoginRequiredMixin, UpdateView):
@@ -42,6 +59,11 @@ class ProductUpdateView(LoginRequiredMixin, UpdateView):
     template_name = 'product_form.html'
     success_url = reverse_lazy('catalog:products_list')
 
+    def dispatch(self, request, *args, **kwargs):
+        obj = self.get_object()
+        if obj.owner != request.user and not request.user.is_superuser:
+            return HttpResponseForbidden("Вы не являетесь владельцем этого продукта.")
+        return super().dispatch(request, *args, **kwargs)
 
 
 class ProductDeleteView(LoginRequiredMixin, DeleteView):
@@ -49,8 +71,23 @@ class ProductDeleteView(LoginRequiredMixin, DeleteView):
     template_name = 'product_confirm_delete.html'
     success_url = reverse_lazy('catalog:products_list')
 
+    def dispatch(self, request, *args, **kwargs):
+        obj = self.get_object()
+        if (
+            obj.owner != request.user
+            and not request.user.groups.filter(name='Модератор продуктов').exists()
+            and not request.user.is_superuser
+        ):
+            return HttpResponseForbidden("Удаление доступно только владельцу, модератору или администратору.")
+        return super().dispatch(request, *args, **kwargs)
 
 
+@permission_required('catalog.can_unpublish_product')
+def unpublish_product(request, pk):
+    product = get_object_or_404(Product, pk=pk)
+    product.is_active = False  # ← это поле должно быть в модели Product
+    product.save()
+    return redirect('products:products_list')
 
 
 
