@@ -90,7 +90,7 @@ class ProductDeleteView(LoginRequiredMixin, DeleteView):
 @permission_required('catalog.can_unpublish_product')
 def unpublish_product(request, pk):
     product = get_object_or_404(Product, pk=pk)
-    product.is_active = False  # ← это поле должно быть в модели Product
+    product.is_active = False
     product.save()
     return redirect('products:products_list')
 
