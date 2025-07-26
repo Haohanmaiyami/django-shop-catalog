@@ -1,14 +1,17 @@
 from django.contrib.auth.decorators import permission_required
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.views import View
 from django.views.generic import TemplateView, ListView, DetailView
 from catalog.models import Product
 from django.http import HttpResponseForbidden
-from django.shortcuts import get_object_or_404, redirect
+from django.shortcuts import get_object_or_404, redirect, render
 
 from django.urls import reverse_lazy
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from .models import Product
+from catalog.models import Product
 from .forms import ProductForm
+from .services import get_products_from_cache, get_products_by_category
+from catalog.models import Category
 
 
 class HomePageView(TemplateView):
@@ -24,11 +27,13 @@ class ProductListView(ListView):
     template_name = 'products_list.html'
     context_object_name = 'products'
 
+    
+    
     def get_queryset(self):
         user = self.request.user
         if user.is_authenticated and (user.is_superuser or user.groups.filter(name='Модератор продуктов').exists()):
             return Product.objects.all()
-        return Product.objects.filter(is_active=True)
+        return get_products_from_cache()
 
 
 class ProductDetailView(LoginRequiredMixin, DetailView):
@@ -85,11 +90,18 @@ class ProductDeleteView(LoginRequiredMixin, DeleteView):
 @permission_required('catalog.can_unpublish_product')
 def unpublish_product(request, pk):
     product = get_object_or_404(Product, pk=pk)
-    product.is_active = False  # ← это поле должно быть в модели Product
+    product.is_active = False
     product.save()
     return redirect('products:products_list')
 
-
+class ProductsByCategoryView(View):
+    def get(self, request, category_id):
+        category = get_object_or_404(Category, pk=category_id)
+        products = get_products_by_category(category_id)
+        return render(request, "catalog/products_by_category.html", {
+            "products": products,
+            "category": category,
+        })
 
 # def home(request):
 #     return render(request, 'catalog/home.html')
