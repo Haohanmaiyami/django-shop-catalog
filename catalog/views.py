@@ -8,7 +8,7 @@ from django.shortcuts import get_object_or_404, redirect, render
 
 from django.urls import reverse_lazy
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from .models import Product
+from catalog.models import Product
 from .forms import ProductForm
 from .services import get_products_from_cache, get_products_by_category
 from catalog.models import Category
@@ -27,8 +27,8 @@ class ProductListView(ListView):
     template_name = 'products_list.html'
     context_object_name = 'products'
 
-
-
+    
+    
     def get_queryset(self):
         user = self.request.user
         if user.is_authenticated and (user.is_superuser or user.groups.filter(name='Модератор продуктов').exists()):

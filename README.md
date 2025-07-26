@@ -186,6 +186,7 @@ brandnewuser@mail.ru Xinyonghu123 - ничего нет, просто юзер,
 justuser@mail.ru Zhishiyonghu123 - просто юзер,
 moderator1@mail.ru password madelatuoli123 - модератор,
 testuser@mail.ru 12345678, 
+
 admin@mail.ru, 12345
 
 # ДЗ Номер 8
@@ -218,3 +219,4 @@ admin@mail.ru, 12345
 - Redis  
 - Bootstrap 5  
 - Git/GitHub  
+
