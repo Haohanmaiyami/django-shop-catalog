@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="album py-5 bg-body-tertiary">
+        <div class="container">
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                <div class="col">
+                    <div class="card shadow-sm">
+                        {% if product.photo %}
+                        <img src="{{ product.photo.url }}">
+                        {% endif %}
+                        <div class="card-body">
+                            <p class="card-text">Name of the product: {{ product.name }}</p>
+                            <p class="card-text">What is it: {{ product.description }}</p>
+                            <p class="card-text">Category: {{ product.category }}</p>
+                            <p class="card-text">Cost: {{ product.price }} $</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <a class="btn btn-primary" href="{% url 'products:products_list' %}" role="button">go
+                                        back</a>
+                                    {% if user == product.owner %}
+                                    <a class="btn btn-warning" href="{% url 'products:product_update' product.pk %}">edit</a>
+                                    {% endif %}
+
+                                    {% if user == product.owner or perms.catalog.delete_product %}
+                                    <a class="btn btn-danger" href="{% url 'products:product_delete' product.pk %}">delete</a>
+                                    {% endif %}
+                                    {% if perms.catalog.can_unpublish_product %}
+                                    <a class="btn btn-outline-secondary" href="{% url 'products:product_unpublish' product.pk %}">Unpublish</a>
+                                    {% endif %}
+
+                                </div>
+                                <small class="text-body-secondary">9 mins</small></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

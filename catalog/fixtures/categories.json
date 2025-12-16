@@ -1,0 +1,26 @@
+[
+{
+    "model": "catalog.category",
+    "pk": 1,
+    "fields": {
+        "name": "игрушки",
+        "description": "Категория для детских игрушек"
+    }
+},
+{
+    "model": "catalog.category",
+    "pk": 2,
+    "fields": {
+        "name": "Игрушки",
+        "description": "Трендовые игрушки"
+    }
+},
+{
+    "model": "catalog.category",
+    "pk": 3,
+    "fields": {
+        "name": "Одежда",
+        "description": "Новомодная одежда"
+    }
+}
+]
