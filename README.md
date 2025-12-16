@@ -1,6 +1,6 @@
 # 🛍️ Django Shop Catalog
 
-A small Django web app that demonstrates a **product catalog + blog + authentication & permissions**.  
+A small Django web app that demonstrates a **product catalog + blog + authentication & permissions**. 
 It’s built as a portfolio-style project with **clean UI**, **CRUD**, and **demo data loading** via fixtures.
 
 ---
@@ -65,7 +65,7 @@ This creates a **fresh** local database on port **5432**:
 ```bash
 docker rm -f djangoshop_db 2>/dev/null
 
-docker run --name djangoshop_db   -e POSTGRES_DB=djangoshop   -e POSTGRES_USER=djangoshop_user   -e POSTGRES_PASSWORD=strong_password   -p 5432:5432   -d postgres:16
+docker run --name djangoshop_db -e POSTGRES_DB=djangoshop -e POSTGRES_USER=djangoshop_user -e POSTGRES_PASSWORD=strong_password -p 5432:5432 -d postgres:16
 ```
 
 ### 5) Create `.env`
@@ -116,7 +116,7 @@ Open in browser:
 ---
 
 ## 🖼️ Images / Media
-This project uses Django `MEDIA` for product images.  
+This project uses Django `MEDIA` for product images. 
 Depending on your Git settings, `media/` might be **ignored** (recommended) and not included in the repository.
 
 If you don’t see images after cloning:
@@ -143,7 +143,7 @@ pip install -r requirements.txt
 ```
 
 ### `IntegrityError / ForeignKeyViolation (owner_id missing) on loaddata`
-Use the updated fixture version (this repo already includes it).  
+Use the updated fixture version (this repo already includes it). 
 If you ever regenerate fixtures, make sure demo data doesn’t depend on existing user IDs.
 
 ---
@@ -151,12 +151,11 @@ If you ever regenerate fixtures, make sure demo data doesn’t depend on existin
 ## 📄 License
 This project is for learning & portfolio purposes.
 
-
 ---
 
 # 🛍️ Django Shop Catalog
 
-Небольшой Django‑проект для портфолио: **каталог товаров + блог + аутентификация и права доступа**.  
+Небольшой Django‑проект для портфолио: **каталог товаров + блог + аутентификация и права доступа**. 
 Цель — показать **CRUD**, работу с **PostgreSQL**, шаблонами и **permissions**.
 
 ---
@@ -189,7 +188,7 @@ This project is for learning & portfolio purposes.
 
 ---
 
-## 🚀 Быстрый старт (как мы сегодня делали: “чистый клон → запускается”)
+## 🚀 Быстрый старт (чистый клон → запускается)
 
 ### 1) Клонирование (лучше SSH)
 ```bash
@@ -221,7 +220,7 @@ pip install -r requirements-utf8.txt
 ```bash
 docker rm -f djangoshop_db 2>/dev/null
 
-docker run --name djangoshop_db   -e POSTGRES_DB=djangoshop   -e POSTGRES_USER=djangoshop_user   -e POSTGRES_PASSWORD=strong_password   -p 5432:5432   -d postgres:16
+docker run --name djangoshop_db -e POSTGRES_DB=djangoshop -e POSTGRES_USER=djangoshop_user -e POSTGRES_PASSWORD=strong_password -p 5432:5432 -d postgres:16
 ```
 
 ### 5) Создай `.env`
@@ -272,7 +271,7 @@ python manage.py runserver
 ---
 
 ## 🖼️ Картинки / Media
-Проект использует Django `MEDIA` для картинок товаров.  
+Проект использует Django `MEDIA` для картинок товаров. 
 Чаще всего `media/` **не хранят в Git** (и это правильно). Поэтому после клона картинки могут не появиться.
 
 Если картинок нет:
@@ -299,7 +298,7 @@ pip install -r requirements.txt
 ```
 
 ### Ошибка `ForeignKeyViolation (owner_id ...)` при `loaddata`
-Значит фикстуры завязаны на user_id.  
+Значит фикстуры завязаны на user_id. 
 В этом репо демо‑фикстуры исправлены так, чтобы грузились на чистую БД.
 
 ---
