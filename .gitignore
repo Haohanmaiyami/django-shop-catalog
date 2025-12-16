@@ -1,8 +1,9 @@
+.env
 __pycache__/
 *.pyc
-*.sqlite3
-.env
-env/
-venv/
 .idea/
-db.sqlite3
+.vscode/
+media/
+*.sqlite3
+htmlcov/
+.coverage
