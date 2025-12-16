@@ -126,28 +126,6 @@ If you don’t see images after cloning:
 
 ---
 
-## 🧯 Troubleshooting
-
-### `zsh: command not found: python`
-Use `python3` or activate venv first:
-```bash
-source venv/bin/activate
-python --version
-```
-
-### `ModuleNotFoundError: No module named 'django'`
-You’re not in the venv or dependencies aren’t installed:
-```bash
-source venv/bin/activate
-pip install -r requirements.txt
-```
-
-### `IntegrityError / ForeignKeyViolation (owner_id missing) on loaddata`
-Use the updated fixture version (this repo already includes it). 
-If you ever regenerate fixtures, make sure demo data doesn’t depend on existing user IDs.
-
----
-
 ## 📄 License
 This project is for learning & portfolio purposes.
 
@@ -278,28 +256,6 @@ python manage.py runserver
 1) Проверь `MEDIA_URL` / `MEDIA_ROOT` в `settings.py`.
 2) Добавь свои картинки через создание товара (UI или админку).
 3) Для портфолио лучше хранить маленький набор скриншотов/демо‑медиа отдельно (`demo_media/`), а не коммитить `media/`.
-
----
-
-## 🧯 Частые ошибки
-
-### `zsh: command not found: python`
-Используй `python3` или активируй venv:
-```bash
-source venv/bin/activate
-python --version
-```
-
-### `No module named 'django'`
-Значит не активировал venv или не поставил зависимости:
-```bash
-source venv/bin/activate
-pip install -r requirements.txt
-```
-
-### Ошибка `ForeignKeyViolation (owner_id ...)` при `loaddata`
-Значит фикстуры завязаны на user_id. 
-В этом репо демо‑фикстуры исправлены так, чтобы грузились на чистую БД.
 
 ---
 
