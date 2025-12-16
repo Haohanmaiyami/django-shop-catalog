@@ -1,0 +1,146 @@
+[
+{
+  "model": "catalog.category",
+  "pk": 1,
+  "fields": {
+    "name": "Toys",
+    "description": "Trendy toys"
+  }
+},
+{
+  "model": "catalog.category",
+  "pk": 2,
+  "fields": {
+    "name": "Clothes",
+    "description": "New clothes"
+  }
+},
+{
+  "model": "catalog.category",
+  "pk": 4,
+  "fields": {
+    "name": "other products",
+    "description": "food, beverages etc"
+  }
+},
+{
+  "model": "catalog.product",
+  "pk": 1,
+  "fields": {
+    "name": "labubuUPDATEDtwice",
+    "description": "mistery labubu",
+    "photo": "products/labubu.jpg",
+    "category": 1,
+    "price": "9.99",
+    "is_active": true,
+    "owner": 13,
+    "created_at": "2025-06-21T07:01:03.051Z",
+    "updated_at": "2025-07-04T22:12:15.504Z"
+  }
+},
+{
+  "model": "catalog.product",
+  "pk": 2,
+  "fields": {
+    "name": "Huggywaggie",
+    "description": "creepy toy",
+    "photo": "products/haggiwaggi.jpg",
+    "category": 1,
+    "price": "20.00",
+    "is_active": true,
+    "owner": 13,
+    "created_at": "2025-06-27T06:22:48.983Z",
+    "updated_at": "2025-07-18T01:45:59.546Z"
+  }
+},
+{
+  "model": "catalog.product",
+  "pk": 3,
+  "fields": {
+    "name": "Dancing cactus test",
+    "description": "Funny singing toy",
+    "photo": "products/dancing_cactus.jpg",
+    "category": 1,
+    "price": "15.00",
+    "is_active": true,
+    "owner": 13,
+    "created_at": "2025-06-27T06:23:25.025Z",
+    "updated_at": "2025-07-10T13:16:11.711Z"
+  }
+},
+{
+  "model": "catalog.product",
+  "pk": 4,
+  "fields": {
+    "name": "T-shirt 4 girls",
+    "description": "Swiftie shirt",
+    "photo": "products/swiftie.jpg",
+    "category": 2,
+    "price": "25.00",
+    "is_active": true,
+    "owner": 13,
+    "created_at": "2025-06-27T06:28:51.734Z",
+    "updated_at": "2025-06-27T06:28:51.734Z"
+  }
+},
+{
+  "model": "catalog.product",
+  "pk": 5,
+  "fields": {
+    "name": "Trendy shirt",
+    "description": "Support new major tshirt",
+    "photo": "products/zohran.jpg",
+    "category": 2,
+    "price": "5.00",
+    "is_active": true,
+    "owner": 13,
+    "created_at": "2025-06-27T06:29:30.441Z",
+    "updated_at": "2025-06-27T06:29:30.441Z"
+  }
+},
+{
+  "model": "catalog.product",
+  "pk": 6,
+  "fields": {
+    "name": "Sport shirt",
+    "description": "Superbowl champions shirt",
+    "photo": "products/superbowl.jpg",
+    "category": 2,
+    "price": "40.00",
+    "is_active": true,
+    "owner": 13,
+    "created_at": "2025-06-27T06:30:13.300Z",
+    "updated_at": "2025-06-27T06:30:13.300Z"
+  }
+},
+{
+  "model": "catalog.product",
+  "pk": 13,
+  "fields": {
+    "name": "Beverage",
+    "description": "Crazy drink",
+    "photo": "products/drink_bHKZFCM.png",
+    "category": 4,
+    "price": "100.00",
+    "is_active": true,
+    "owner": 14,
+    "created_at": "2025-07-18T01:19:37.755Z",
+    "updated_at": "2025-07-18T02:35:52.481Z"
+  }
+},
+{
+  "model": "catalog.product",
+  "pk": 14,
+  "fields": {
+    "name": "just product from user",
+    "description": "1 product to test",
+    "photo": "products/IMG_20180107_225251_21BGG2C.jpg",
+    "category": 4,
+    "price": "1231.00",
+    "is_active": true,
+    "owner": 16,
+    "created_at": "2025-07-18T02:43:55.195Z",
+    "updated_at": "2025-07-18T02:43:55.195Z"
+  }
+}
+]
